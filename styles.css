@@ -1,0 +1,40 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(62, 67, 71);
+}
+
+button {
+  border: 1px solid springgreen;
+  border-radius: 4px;
+  padding: 20px;
+  background: none;
+  color: springgreen;
+  cursor: pointer;
+  font-size: 1.5rem;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.8);
+  transition: 0.1s linear;
+}
+
+button:hover {
+  filter: brightness(150%);
+  background: rgba(0, 0, 0, 0.1);
+  box-shadow: 0 20px 20px 0 rgba(0, 0, 0, 0.8);
+  transform: translateY(-5px);
+}
+
+button:active {
+  box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.8);
+  transform: translateY(0px);
+}
