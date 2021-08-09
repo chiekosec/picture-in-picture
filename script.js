@@ -4,12 +4,17 @@ const button = document.getElementById("button");
 // capture selected screen and pass it to video elemet
 async function selectMediaStream() {
   try {
-    const mediaStream = await navigator.mediaDevices.getDisplayMedia();
-    videoElement.srcObject = mediaStream;
-    videoElement.onloadedmetadata = () => {
-      videoElement.play();
-      videoElement.requestPictureInPicture();
-    };
+    if (typeof videoElement.requestPictureInPicture !== "function") {
+      document.body.innerText =
+        "This browser doesn't support picture-in-picture mode. Please try Chrome/Safari?Edge";
+    } else {
+      const mediaStream = await navigator.mediaDevices.getDisplayMedia();
+      videoElement.srcObject = mediaStream;
+      videoElement.onloadedmetadata = () => {
+        videoElement.play();
+        videoElement.requestPictureInPicture();
+      };
+    }
   } catch (error) {
     console.log(error);
   }
