@@ -1,24 +1,19 @@
 const videoElement = document.getElementById("video");
 const button = document.getElementById("button");
 
+// capture selected screen and pass it to video elemet
 async function selectMediaStream() {
   try {
     const mediaStream = await navigator.mediaDevices.getDisplayMedia();
     videoElement.srcObject = mediaStream;
     videoElement.onloadedmetadata = () => {
       videoElement.play();
+      videoElement.requestPictureInPicture();
     };
   } catch (error) {
     console.log(error);
   }
 }
 
-// show screen in pictur-in-picture mode
-async function showPicinPic() {
-  await videoElement.requestPictureInPicture();
-}
-
-button.addEventListener("click", showPicinPic);
-
-// prompt screen capture on page load
-window.onload = selectMediaStream();
+// prompt screen capture on clicking button
+button.addEventListener("click", selectMediaStream);
